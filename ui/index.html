@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Eric M. Poole" />
+    <meta name="description" content="A simple pastebin clone" />
+    <title>cc Pastebin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <header>
+      <h1>cc Pastebin</h1>
+      <section>
+        <p>Add some text and hit submit to generate a link to your message.</p>
+      </section>
+    </header>
+    <main>
+      <form action="/save" method="post">
+        <textarea name="user_text" id="user-text"></textarea>
+        <button type="submit" hx-post="/save" hx-trigger="click">Submit</button>
+      </form>
+    </main>
+    <footer>&copy; Eric M. Poole</footer>
+  </body>
+</html>
