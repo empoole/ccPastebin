@@ -6,8 +6,5 @@ import (
 )
 
 func Migrate() {
-   
 	database.DBConnection.AutoMigrate(model.Note{})
-
-
 }

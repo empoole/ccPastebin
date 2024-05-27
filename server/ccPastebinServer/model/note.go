@@ -3,6 +3,9 @@ package model
 import (
 	"ccPasteBinServer/database"
 
+	"crypto/md5"
+	"encoding/hex"
+
 	"gorm.io/gorm"
 )
 
@@ -24,7 +27,7 @@ func (note *Note) Save() (*Note, error) {
 }
 
 func (note *Note) BeforeSave(*gorm.DB) error {
-	// create hash
+	note.Hash = GetMD5Hash(note.Message)
 	return nil
 }
 
@@ -45,4 +48,9 @@ func FindNoteById(id uint) (Note, error) {
 			return Note{}, err
 	}
 	return note, nil
+}
+
+func GetMD5Hash(text string) string {
+ hash := md5.Sum([]byte(text))
+ return hex.EncodeToString(hash[:])
 }
